@@ -1,7 +1,7 @@
 from microdot_asyncio import Microdot, Response, send_file
 from microdot_utemplate import render_template
 from color_service import ReadColorsService
-from rgb_led_inventor2040 import OnBoardRGBLEDModule
+from rgb_led_inventor2040 import RGBLEDModule
 # from rgb_led import RGBLEDModule
 
 # Initialize MicroDot
@@ -12,10 +12,8 @@ Response.default_content_type = 'text/html'
 color_service = ReadColorsService()
 led_colors = color_service.read_colors()
 
-# Set which LED index on the on board LED bar we want to use
-# max number of LED = NUM_LEDS from inventor2040 (a constant)
-# ex here we use LED 0,1 and 5
-rgb_led_module = OnBoardRGBLEDModule([0 , 1, 5])
+# Set the GPIO pins
+rgb_led_module = RGBLEDModule([13 , 14, 15])
 
 # root route
 @app.route('/')
