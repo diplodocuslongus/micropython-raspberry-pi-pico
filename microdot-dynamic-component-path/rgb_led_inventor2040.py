@@ -41,7 +41,7 @@ class OnBoardLEDModule:
             board.leds.set_rgb(i,0,0,0)
         
     # Turn off RGB
-    def turn_off_rgb(self):
+    def turn_off_leds(self):
         for i in range(NUM_LEDS):
             board.leds.set_rgb(i,0,0,0)
         time.sleep(0.1)
@@ -49,8 +49,10 @@ class OnBoardLEDModule:
     # Set RGB Color
     def set_rgb_color(self, color):
         red, green, blue = color
-        self.turn_off_rgb()  
-        for i in range(self.leds):
+        print(red, green, blue)
+
+        self.turn_off_leds()  
+        for i in self.leds:
             board.leds.set_rgb(i,red,green,blue)
         
         
@@ -88,7 +90,6 @@ class RGBLEDModule:
     # Set RGB Color
     def set_rgb_color(self, color):
         red, green, blue = color
-        
         self.turn_off_rgb()  
         
         self.pwms[RED].duty_u16(self.map_range(red, 0, 255, 0, 65535))
@@ -96,4 +97,7 @@ class RGBLEDModule:
         self.pwms[BLUE].duty_u16(self.map_range(blue, 0, 255, 0, 65535))
 
 # standalone test
-rgb_led_module = OnBoardLEDModule([0 , 1, 5])
+# rgb_led_module = OnBoardLEDModule([0 , 1, 5])
+# rgb_led_module.set_rgb_color([255,0,255])
+# time.sleep(1)
+# rgb_led_module.turn_off_leds()

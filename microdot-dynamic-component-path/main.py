@@ -15,7 +15,7 @@ led_colors = color_service.read_colors()
 # Set which LED index on the on board LED bar we want to use
 # max number of LED = NUM_LEDS from inventor2040 (a constant)
 # ex here we use LED 0,1 and 5
-rgb_led_module = OnBoardRGBLEDModule([0 , 1, 5])
+rgb_led_module = OnBoardLEDModule([0 , 1, 5])
 
 # root route
 @app.route('/')
